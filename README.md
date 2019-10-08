@@ -8,7 +8,7 @@ Esse repositório é um simples projeto em flutter que foi construido no treinam
 
 # Screenshots
 
- <img src="https://raw.githubusercontent.com/treeinova/todos-app/master/screenshots/demo.gif" height="500em" />
+ <img src="https://github.com/treeinova/todos-app/blob/develop/screenshots/demo.gif?raw=true" height="500em" />
 
 # Assuntos Abordados
 
