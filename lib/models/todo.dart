@@ -20,10 +20,10 @@ class Todo {
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
+    data['id'] = this.id ?? 0;
     data['titulo'] = this.titulo;
     data['descricao'] = this.descricao;
-    data['concluido'] = this.concluido;
+    data['concluido'] = this.concluido ?? false;
     return data;
   }
 }

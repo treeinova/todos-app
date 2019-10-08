@@ -13,6 +13,8 @@ class ListPage extends StatefulWidget {
 
 class ListPageState extends State<ListPage> {
   List<Todo> list_todos = [];
+  bool showFab = true;
+
   TodoRepository repository;
   @override
   void initState() {
@@ -33,35 +35,135 @@ class ListPageState extends State<ListPage> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Lista de Tarefas'),
-        actions: <Widget>[Icon(Icons.today)],
       ),
-      body: ListView.builder(
-        itemBuilder: (context, index) {
-          return ListTile(
-            leading: Icon(
-              Icons.check_circle,
-              color: list_todos[index].concluido ? Colors.black : Colors.grey,
-            ),
-            title: Text(list_todos[index].titulo),
-            subtitle: Text(list_todos[index].descricao),
-          );
-        },
-        itemCount: list_todos.length,
+      body: Center(
+        child: list_todos.isEmpty
+            ? Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: <Widget>[
+                  SizedBox(
+                    height: 100,
+                  ),
+                  Icon(
+                    Icons.edit_attributes,
+                    color: Colors.grey,
+                    size: 60,
+                  ),
+                  Text(
+                    'Nenhuma tarefa cadastrada',
+                    style: TextStyle(fontSize: 25, color: Colors.grey),
+                  ),
+                ],
+              )
+            : ListView.builder(
+                itemBuilder: (context, index) {
+                  var todo = list_todos[index];
+                  return ListTile(
+                    leading: Icon(
+                      Icons.check_circle,
+                      color: list_todos[index].concluido
+                          ? Colors.black
+                          : Colors.grey,
+                    ),
+                    title: Text(list_todos[index].titulo),
+                    subtitle: Text(list_todos[index].descricao),
+                    onTap: () async {
+                      await Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => CreateEditPage(todo: todo)),
+                      );
+
+                      loadTodos();
+                    },
+                    onLongPress: () {
+                      var bottomSheetController = showModalBottomSheet(
+                          context: context,
+                          builder: (context) => Container(
+                                height: 150,
+                                child: ListView(
+                                  children: <Widget>[
+                                    Padding(
+                                      padding: const EdgeInsets.all(8.0),
+                                      child: Text('Opções'),
+                                    ),
+                                    ListTile(
+                                      leading: Icon(
+                                        Icons.check_circle,
+                                        color: todo.concluido
+                                            ? Colors.grey
+                                            : Colors.black,
+                                      ),
+                                      title: Text(todo.concluido
+                                          ? 'Marcar como não concluida'
+                                          : 'Marcar como concluida'),
+                                      onTap: () {
+                                        _onMarkComplete(todo.id);
+                                        Toast.show(
+                                            'Tarefa ${todo.titulo} foi concluida!',
+                                            context);
+                                        Navigator.pop(context);
+                                      },
+                                    ),
+                                    ListTile(
+                                      leading: Icon(
+                                        Icons.delete,
+                                        color: Colors.red,
+                                      ),
+                                      title: Text('Excluir tarefa'),
+                                      onTap: () {
+                                        _onDeleteTask(todo.id);
+                                        Toast.show(
+                                            'Tarefa ${todo.titulo} foi excluida!',
+                                            context);
+                                        Navigator.pop(context);
+                                      },
+                                    ),
+                                  ],
+                                ),
+                              ));
+
+                      showFoatingActionButton(false);
+                      bottomSheetController.then((value) {
+                        showFoatingActionButton(true);
+                      });
+                    },
+                  );
+                },
+                itemCount: list_todos.length,
+              ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          // quando o botão for clilcado.
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => CreateEditPage()),
-          );
-        },
-        child: Icon(Icons.add),
-      ),
+      floatingActionButton: showFab
+          ? FloatingActionButton(
+              backgroundColor: Colors.black,
+              onPressed: () async {
+                // quando o botão for clilcado.
+                await Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => CreateEditPage()),
+                );
+
+                loadTodos();
+              },
+              child: Icon(Icons.add),
+            )
+          : Container(),
     );
   }
 
-  void showToast(String msg, {int duration, int gravity}) {
-    Toast.show(msg, context, duration: duration, gravity: gravity);
+  void showFoatingActionButton(bool value) {
+    setState(() {
+      showFab = value;
+    });
+  }
+
+  Future _onDeleteTask(int id) async {
+    await this.repository.delete(id);
+    loadTodos();
+  }
+
+  Future _onMarkComplete(int id) async {
+    await this.repository.markComplete(id);
+    loadTodos();
   }
 }

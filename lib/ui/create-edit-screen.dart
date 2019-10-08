@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:helloword/models/todo.dart';
+import 'package:helloword/repositories/todo-repository.dart';
+import 'package:toast/toast.dart';
 
 class CreateEditPage extends StatefulWidget {
+  final Todo todo;
+
+  const CreateEditPage({Key key, this.todo}) : super(key: key);
   @override
   _CreateEditPageState createState() => _CreateEditPageState();
 }
@@ -9,6 +14,20 @@ class CreateEditPage extends StatefulWidget {
 class _CreateEditPageState extends State<CreateEditPage> {
   GlobalKey<FormState> _form = GlobalKey<FormState>();
   Todo _todo = Todo();
+  TodoRepository _todoRepository = TodoRepository();
+
+  @override
+  void initState() {
+    if (widget.todo != null) {
+      _todo = Todo(
+        id: widget.todo.id ?? 0,
+        titulo: widget.todo.titulo,
+        descricao: widget.todo.descricao,
+        concluido: widget.todo.concluido,
+      );
+    }
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -23,6 +42,7 @@ class _CreateEditPageState extends State<CreateEditPage> {
           child: Column(
             children: <Widget>[
               TextFormField(
+                initialValue: _todo.titulo ?? '',
                 decoration: InputDecoration(
                     icon: Icon(Icons.edit),
                     labelText: 'Titulo',
@@ -38,6 +58,7 @@ class _CreateEditPageState extends State<CreateEditPage> {
                 },
               ),
               TextFormField(
+                initialValue: _todo.descricao ?? '',
                 decoration: InputDecoration(
                     icon: Icon(Icons.format_align_left),
                     labelText: 'Descrição',
@@ -58,11 +79,19 @@ class _CreateEditPageState extends State<CreateEditPage> {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {
+        backgroundColor: Colors.black,
+        onPressed: () async {
           if (this._form.currentState.validate()) {
             this._form.currentState.save();
-            print(_todo);
-            Navigator.pop(context, _todo);
+
+            var sucess = await _todoRepository.saveChanges(_todo);
+
+            if (sucess) {
+              Toast.show('Tarefa salva com sucesso!', context);
+              Navigator.pop(context);
+            } else {
+              Toast.show('Problemas ao salvar tarefa!', context);
+            }
           }
         },
         child: Icon(Icons.check),
