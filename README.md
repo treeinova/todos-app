@@ -1,4 +1,4 @@
-# Aplicativo de Gerenciamento de Tarefa
+# Aplicativo de Gerenciamento de Tarefa [Em Construção]
 
 Esse repositório é um simples projeto em flutter que foi construido no treinamento de Flutter em conjunto com os alunos presentes.
 
@@ -8,11 +8,9 @@ Esse repositório é um simples projeto em flutter que foi construido no treinam
 
 # Screenshots
 
-![image](https://raw.githubusercontent.com/treeinova/todos-app/master/screenshots/Screenshot_1.png)
-
-![image](https://raw.githubusercontent.com/treeinova/todos-app/master/screenshots/Screenshot_2.png)
-
-![image](https://raw.githubusercontent.com/treeinova/todos-app/master/screenshots/Screenshot_3.png)
+ <img src="https://raw.githubusercontent.com/treeinova/todos-app/master/screenshots/Screenshot_1.png" height="500em" />
+<img src="https://raw.githubusercontent.com/treeinova/todos-app/master/screenshots/Screenshot_2.png" height="500em" />
+<img src="https://raw.githubusercontent.com/treeinova/todos-app/master/screenshots/Screenshot_3.png" height="500em" />
 
 # Assuntos Abordados
 
