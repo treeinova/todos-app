@@ -8,11 +8,11 @@ Esse repositório é um simples projeto em flutter que foi construido no treinam
 
 # Screenshots
 
-![image](https://cloud.githubusercontent.com/assets/9053854/24495974/fbf2e0cc-1547-11e7-846c-25b5fac7f6b1.png)
+![image](https://raw.githubusercontent.com/treeinova/todos-app/master/screenshots/Screenshot_1.png)
 
-![image](https://cloud.githubusercontent.com/assets/9053854/24495974/fbf2e0cc-1547-11e7-846c-25b5fac7f6b1.png)
+![image](https://raw.githubusercontent.com/treeinova/todos-app/master/screenshots/Screenshot_2.png)
 
-![image](https://cloud.githubusercontent.com/assets/9053854/24495974/fbf2e0cc-1547-11e7-846c-25b5fac7f6b1.png)
+![image](https://raw.githubusercontent.com/treeinova/todos-app/master/screenshots/Screenshot_3.png)
 
 # Assuntos Abordados
 
