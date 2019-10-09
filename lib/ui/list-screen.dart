@@ -12,7 +12,10 @@ class ListPage extends StatefulWidget {
 }
 
 class ListPageState extends State<ListPage> {
+  /// lista de tarefas
   List<Todo> list_todos = [];
+
+  /// flag para desaparecer botão de adicionar uma nova tarefa
   bool showFab = true;
 
   TodoRepository repository;
@@ -23,6 +26,7 @@ class ListPageState extends State<ListPage> {
     super.initState();
   }
 
+  /// Carrega as tarefas
   void loadTodos() async {
     var list = await repository.getAll();
     setState(() {
@@ -123,9 +127,9 @@ class ListPageState extends State<ListPage> {
                                 ),
                               ));
 
-                      showFoatingActionButton(false);
+                      _showFoatingActionButton(false);
                       bottomSheetController.then((value) {
-                        showFoatingActionButton(true);
+                        _showFoatingActionButton(true);
                       });
                     },
                   );
@@ -151,17 +155,20 @@ class ListPageState extends State<ListPage> {
     );
   }
 
-  void showFoatingActionButton(bool value) {
+  /// Método que desaparece botão de adicionar uma nova tarefa
+  void _showFoatingActionButton(bool value) {
     setState(() {
       showFab = value;
     });
   }
 
+  /// Método que deleta uma tarefa
   Future _onDeleteTask(int id) async {
     await this.repository.delete(id);
     loadTodos();
   }
 
+  /// Método que altera o status da tarefa
   Future _onMarkComplete(int id) async {
     await this.repository.markComplete(id);
     loadTodos();

@@ -1,4 +1,4 @@
-# Aplicativo de Gerenciamento de Tarefa [Em Construção]
+# Aplicativo de Gerenciamento de Tarefa
 
 Esse repositório é um simples projeto em flutter que foi construido no treinamento de Flutter em conjunto com os alunos presentes.
 

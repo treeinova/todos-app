@@ -3,7 +3,9 @@ import 'package:helloword/models/todo.dart';
 import 'package:helloword/repositories/todo-repository.dart';
 import 'package:toast/toast.dart';
 
+/// Screen de criação de tarefa
 class CreateEditPage extends StatefulWidget {
+  /// Objeto da tarefa imultavél
   final Todo todo;
 
   const CreateEditPage({Key key, this.todo}) : super(key: key);
@@ -12,8 +14,13 @@ class CreateEditPage extends StatefulWidget {
 }
 
 class _CreateEditPageState extends State<CreateEditPage> {
+  /// Chave global do formulário
   GlobalKey<FormState> _form = GlobalKey<FormState>();
+
+  /// Objeto da tarefa multavél
   Todo _todo = Todo();
+
+  /// Repositório da tarefa
   TodoRepository _todoRepository = TodoRepository();
 
   @override

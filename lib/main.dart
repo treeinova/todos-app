@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:helloword/ui/list-screen.dart';
 
-void main() => runApp(MyApp());
+void main() => runApp(ToDoApp());
 
-class MyApp extends StatelessWidget {
+class ToDoApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
