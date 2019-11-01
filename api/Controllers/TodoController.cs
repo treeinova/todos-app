@@ -26,6 +26,19 @@ namespace TodoListApi.Controllers
             return Ok(_todoService.Get());
         }
 
+        [HttpGet("Today")]
+        public ActionResult GetToday()
+        {
+            return Ok(_todoService.GetToday());
+        }
+
+        [HttpGet("yesterday")]
+        public ActionResult GetYesterday()
+        {
+            return Ok(_todoService.GetYestDay());
+        }
+
+
         [HttpGet("{id:int}")]
         public ActionResult Get(int id)
         {

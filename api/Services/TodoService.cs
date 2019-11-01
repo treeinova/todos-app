@@ -9,7 +9,7 @@ namespace TodoListApi.Services
     public class TodoService
     {
         TodoListContext _context;
-        
+
         public TodoService(TodoListContext context)
         {
             _context = context;
@@ -23,6 +23,15 @@ namespace TodoListApi.Services
         public IQueryable<Todo> Get()
         {
             return _context.Todo;
+        }
+
+        public IQueryable<Todo> GetToday()
+        {
+            return _context.Todo.Where(p => p.DataTarefa.Value.Date == DateTime.Now.Date);
+        }
+        public IQueryable<Todo> GetYestDay()
+        {
+            return _context.Todo.Where(p => p.DataTarefa.Value.Date == DateTime.Now.AddDays(1).Date);
         }
 
         public int Insert(Todo todo)

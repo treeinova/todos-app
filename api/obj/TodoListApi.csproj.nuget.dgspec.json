@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "c:\\Users\\Marcos Mota\\Treinamento-Flutter\\helloword\\api\\TodoListApi.csproj": {}
+    "C:\\Users\\Marcos Mota\\Treinamento-Flutter\\helloword\\api\\TodoListApi.csproj": {}
   },
   "projects": {
-    "c:\\Users\\Marcos Mota\\Treinamento-Flutter\\helloword\\api\\TodoListApi.csproj": {
+    "C:\\Users\\Marcos Mota\\Treinamento-Flutter\\helloword\\api\\TodoListApi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\Users\\Marcos Mota\\Treinamento-Flutter\\helloword\\api\\TodoListApi.csproj",
+        "projectUniqueName": "C:\\Users\\Marcos Mota\\Treinamento-Flutter\\helloword\\api\\TodoListApi.csproj",
         "projectName": "TodoListApi",
-        "projectPath": "c:\\Users\\Marcos Mota\\Treinamento-Flutter\\helloword\\api\\TodoListApi.csproj",
+        "projectPath": "C:\\Users\\Marcos Mota\\Treinamento-Flutter\\helloword\\api\\TodoListApi.csproj",
         "packagesPath": "C:\\Users\\Marcos Mota\\.nuget\\packages\\",
-        "outputPath": "c:\\Users\\Marcos Mota\\Treinamento-Flutter\\helloword\\api\\obj\\",
+        "outputPath": "C:\\Users\\Marcos Mota\\Treinamento-Flutter\\helloword\\api\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

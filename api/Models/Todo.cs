@@ -12,6 +12,8 @@ namespace TodoListApi.Models
         public string Titulo { get; set; }
         public string Descricao { get; set; }
         public bool Concluido { get; set; }
+
+        public DateTime? DataTarefa { get; set; }
         public DateTime DataCriacao { get; set; }
         public DateTime? DataAtualizacao { get; set; }
     }
